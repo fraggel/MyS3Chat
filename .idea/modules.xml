@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyS3Chat.iml" filepath="$PROJECT_DIR$/MyS3Chat.iml" group="MyS3Chat" />
+      <module fileurl="file://$PROJECT_DIR$/app/MyS3Chat-app.iml" filepath="$PROJECT_DIR$/app/MyS3Chat-app.iml" group="MyS3Chat/app" />
       <module fileurl="file://$PROJECT_DIR$/MyS3Chat-master.iml" filepath="$PROJECT_DIR$/MyS3Chat-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
