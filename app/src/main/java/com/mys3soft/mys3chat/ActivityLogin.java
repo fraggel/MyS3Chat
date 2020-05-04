@@ -78,7 +78,6 @@ public class ActivityLogin extends AppCompatActivity {
                     .baseUrl(ENDPOINT)
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .build();
-
             IFireBaseAPI api = retrofit.create(IFireBaseAPI.class);
             // Call<String> call = api.getAllUsersAsJsonString();
             Call<String> call = api.getSingleUserByEmail(StaticInfo.UsersURL + "/" + email + ".json");
@@ -133,9 +132,8 @@ public class ActivityLogin extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        Intent i = new Intent(Intent.ACTION_MAIN);
+
+        startActivity(i);
     }
 }

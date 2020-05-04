@@ -137,6 +137,7 @@ public class NotficationListAdapter extends ArrayAdapter<NotificationModel> {
                         notMap.put("NotificationType", "3");
                         Firebase notRef = new Firebase(StaticInfo.NotificationEndPoint + "/" + friendEmail);
                         notRef.push().setValue(notMap);
+
                     }
                 }
         );

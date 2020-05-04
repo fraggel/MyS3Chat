@@ -14,5 +14,7 @@ public class StaticInfo {
     public static String FriendRequestsEndPoint = "https://chat-8459f.firebaseio.com/friendrequests";
 
     public static int ChatAciviityRequestCode = 101;
+    public static int ImageActivityRequestCode=102;
+    public static int VideoActivityRequestCode=103;
 
 }

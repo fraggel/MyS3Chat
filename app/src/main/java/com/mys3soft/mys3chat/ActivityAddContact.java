@@ -51,9 +51,9 @@ public class ActivityAddContact extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         TextView email = (TextView) view.findViewById(R.id.tv_HiddenEmail);
                         // start FriendProfileFull
-                        Intent intent = new Intent(ActivityAddContact.this, ActivityFriendProfile.class);
-                        intent.putExtra("Email", email.getText().toString());
-                        startActivity(intent);
+                        Intent i = new Intent(ActivityAddContact.this, ActivityFriendProfile.class);
+                        i.putExtra("Email", email.getText().toString());
+                        startActivity(i);
                     }
                 }
         );

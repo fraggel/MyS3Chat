@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.mys3soft.mys3chat.ActivityLogin">
@@ -13,12 +14,13 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:paddingTop="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            android:paddingTop="40dp">
+
             <EditText
                 android:id="@+id/et_Email"
                 android:layout_width="match_parent"
@@ -40,26 +42,26 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/btn_primary"
                 android:drawableLeft="@drawable/emoji_1f464"
                 android:onClick="btnLoginClick"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:layout_marginTop="40dp"
                 android:text="Login"
-                android:layout_marginBottom="15dp"
                 android:textColor="#ffffff" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_success"
                 android:drawableLeft="@drawable/emoji_1f465"
                 android:onClick="btnSignUpClick"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:text="Sign Up"
-                android:layout_marginBottom="20dp"
                 android:textColor="#ffffff" />
         </LinearLayout>
 

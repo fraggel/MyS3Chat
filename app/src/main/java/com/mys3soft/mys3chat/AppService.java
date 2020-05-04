@@ -3,12 +3,14 @@ package com.mys3soft.mys3chat;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.Vibrator;
 import android.provider.ContactsContract;
+import android.service.notification.StatusBarNotification;
 import android.support.v7.app.NotificationCompat;
 
 import com.firebase.client.ChildEventListener;
@@ -26,7 +28,7 @@ import java.util.Map;
 public class AppService extends Service {
     public AppService() {
     }
-
+    Firebase refUser;
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -35,7 +37,23 @@ public class AppService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Firebase.setAndroidContext(getApplicationContext());
-        User user = LocalUserService.getLocalUserFromPreferences(getApplicationContext());
+
+        DataContext db = new DataContext(this, null, null, 1);
+
+        // check if user exists in local db
+       User user = LocalUserService.getLocalUserFromPreferences(getApplicationContext());
+        if (user.Email == null) {
+            // send to activitylogin
+//            Intent intent = new Intent(this, ActivityLogin.class);
+//            startActivityForResult(intent, 100);
+//
+        } else {
+            startService(new Intent(this, AppService.class));
+            if (refUser == null) {
+                refUser = new Firebase(StaticInfo.UsersURL + "/" + user.Email);
+            }
+
+        }
         final Firebase reference = new Firebase(StaticInfo.NotificationEndPoint + "/" + user.Email);
         reference.addChildEventListener(
                 new ChildEventListener() {
@@ -131,10 +149,23 @@ public class AppService extends Service {
         not.setContentTitle("New Update");
         not.setContentText("New Update");
         not.setContentInfo("New Update");
+        not.setContentIntent(PendingIntent.getActivity(getApplicationContext(), uniqueID, new Intent() , PendingIntent.FLAG_CANCEL_CURRENT));
         i.putExtra("FriendEmail", friendEmail);
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         not.setDefaults(Notification.DEFAULT_ALL);
-        nm.notify(uniqueID, not.build());
-
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        StatusBarNotification[] notifications = new StatusBarNotification[0];
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            notifications = mNotificationManager.getActiveNotifications();
+            if(notifications.length>0) {
+                for (StatusBarNotification notification : notifications) {
+                    if (notification.getId() != uniqueID) {
+                        nm.notify(uniqueID, not.build());
+                    }
+                }
+            }else{
+                nm.notify(uniqueID, not.build());
+            }
+        }
     }
 }

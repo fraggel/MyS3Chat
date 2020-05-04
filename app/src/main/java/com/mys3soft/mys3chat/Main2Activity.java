@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
@@ -35,7 +36,7 @@ public class Main2Activity extends AppCompatActivity {
     Button button0, button1, button2, button3, button4, button5, button6,
             button7, button8, button9, buttonAdd, buttonSub, buttonDivision,
             buttonMul, button10, buttonC, buttonEqual;
-    EditText crunchifyEditText;
+    TextView crunchifyEditText;
 
     float mValueOne, mValueTwo;
     private ActivityMain.SectionsPagerAdapter mSectionsPagerAdapter;
@@ -65,14 +66,14 @@ public class Main2Activity extends AppCompatActivity {
         button7 = (Button) findViewById(R.id.button7);
         button8 = (Button) findViewById(R.id.button8);
         button9 = (Button) findViewById(R.id.button9);
-        button10 = (Button) findViewById(R.id.button10);
+        button10 = (Button) findViewById(R.id.buttonDot);
         buttonAdd = (Button) findViewById(R.id.buttonadd);
         buttonSub = (Button) findViewById(R.id.buttonsub);
         buttonMul = (Button) findViewById(R.id.buttonmul);
         buttonDivision = (Button) findViewById(R.id.buttondiv);
-        buttonC = (Button) findViewById(R.id.buttonC);
+        buttonC = (Button) findViewById(R.id.buttonDel);
         buttonEqual = (Button) findViewById(R.id.buttoneql);
-        crunchifyEditText = (EditText) findViewById(R.id.edt1);
+        crunchifyEditText = (TextView) findViewById(R.id.edit_text);
 
         // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
@@ -99,18 +100,79 @@ public class Main2Activity extends AppCompatActivity {
         } else {
             // Permission has already been granted
         }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
 
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        667);
 
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setOnLongClickListener(new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View v) {
-                /*Intent intent = new Intent (v.getContext(), ActivityMain.class);
-                startActivityForResult(intent, 0);*/
-                return true;
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
             }
-        });
+        } else {
+            // Permission has already been granted
+        }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        667);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            // Permission has already been granted
+        }
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.RECEIVE_BOOT_COMPLETED)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.RECEIVE_BOOT_COMPLETED)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.RECEIVE_BOOT_COMPLETED},
+                        667);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            // Permission has already been granted
+        }
         Firebase.setAndroidContext(this);
 
         db = new DataContext(this, null, null, 1);
@@ -248,8 +310,9 @@ public class Main2Activity extends AppCompatActivity {
                 mValueTwo = Float.parseFloat(crunchifyEditText.getText() + "");
                 if(mValueTwo==1404){
                     crunchifyEditText.setText("");
-                    Intent intent = new Intent (v.getContext(), ActivityMain.class);
-                    startActivityForResult(intent, 0);
+                    Intent i = new Intent (v.getContext(), ActivityMain.class);
+
+                    startActivityForResult(i, 0);
                 }
                 if (crunchifyAddition == true) {
                     crunchifyEditText.setText(mValueOne + mValueTwo + "");
@@ -373,9 +436,9 @@ public class Main2Activity extends AppCompatActivity {
                             // the user clicked on list[index]
                             if (index == 0) {
                                 // Profile
-                                Intent intent = new Intent(Main2Activity.this, ActivityFriendProfile.class);
-                                intent.putExtra("Email", selectedUser.Email);
-                                startActivityForResult(intent, StaticInfo.ChatAciviityRequestCode);
+                                Intent i = new Intent(Main2Activity.this, ActivityFriendProfile.class);
+                                i.putExtra("Email", selectedUser.Email);
+                                startActivityForResult(i, StaticInfo.ChatAciviityRequestCode);
                             } else {
                                 // Delete Contact
                                 new AlertDialog.Builder(Main2Activity.this)

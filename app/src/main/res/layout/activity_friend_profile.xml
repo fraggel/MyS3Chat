@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical"
     android:padding="20dp"
     tools:context="com.mys3soft.mys3chat.ActivityFriendProfile">
@@ -17,19 +18,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_round"
-        android:padding="10dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
 
         <TextView
             android:id="@+id/tv_FriendFullName_L_FriendProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Full Name"
-            android:textColor="#ffffff"
             android:layout_weight="30"
+            android:text="Full Name"
             android:textAlignment="center"
+            android:textColor="#ffffff"
             android:textSize="20dp" />
 
         <ImageButton
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:onClick="btn_EditNameClick"
-            android:src="@android:drawable/ic_menu_edit"/>
+            android:src="@android:drawable/ic_menu_edit" />
 
     </LinearLayout>
 
