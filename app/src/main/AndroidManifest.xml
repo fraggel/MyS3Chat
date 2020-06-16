@@ -30,33 +30,52 @@
         <activity
             android:name=".VisorVideos"
             android:excludeFromRecents="true"
+            android:configChanges="orientation|screenSize"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"
             />
         <activity
             android:name=".VisorImagenes"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"
             />
         <activity
             android:name=".ActivityMain"
             
             android:configChanges="orientation|screenSize"
-            android:excludeFromRecents="true"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"/>
         <activity
             android:name=".ActivityLogin"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"
             />
         <activity
             android:name=".ActivityRegister"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"
             />
         <activity
             android:name=".ActivityProfile"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"
             />
         <activity
             android:name=".ActivityChat"
@@ -68,16 +87,25 @@
             android:name=".ActivityAddContact"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"
             />
         <activity
             android:name=".ActivityFriendProfile"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"
             />
         <activity
             android:name=".ActivityNotifications"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:noHistory="true"
             />
 
         <service

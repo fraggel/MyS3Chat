@@ -31,6 +31,7 @@ public class MyOnSuccessListener implements OnSuccessListener {
     public void onSuccess(Object o) {
         Intent i = new Intent(getContexto(), VisorImagenes.class);
         i.putExtra("key", getValue());
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getContexto().startActivity(i);
     }
 }

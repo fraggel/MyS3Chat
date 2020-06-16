@@ -21,13 +21,16 @@ public class VisorImagenes extends AppCompatActivity {
     String value =null;
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
-        mScaleGestureDetector.onTouchEvent(motionEvent);
+        try {
+            mScaleGestureDetector.onTouchEvent(motionEvent);
+        }catch(Exception e){}
         return true;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visor_imagenes);
+        getSupportActionBar().hide();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
                 String value = extras.getString("key");

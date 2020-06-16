@@ -20,7 +20,7 @@ public class VisorVideos extends AppCompatActivity {
 
         // set the main layout of the activity
         setContentView(R.layout.activity_visor_videos);
-
+        getSupportActionBar().hide();
         //set the media controller buttons
         if (mediaControls == null) {
             mediaControls = new MediaController(VisorVideos.this);

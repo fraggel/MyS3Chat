@@ -502,7 +502,7 @@ public class ActivityChat extends AppCompatActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference();
             StorageReference ref = storageRef.child(urlImagen.replaceFirst("images/","images/thmb_"));
-            ficheroThmb=new File(Environment.getExternalStorageDirectory()+urlImagen.replaceFirst("images/","images/thmb_"));
+            ficheroThmb=new File(Environment.getExternalStorageDirectory()+"/Calculator/"+urlImagen.replaceFirst("images/","images/thmb_"));
             ficheroThmb.getParentFile().mkdirs();
             if(!ficheroThmb.exists()) {
                 ref.getFile(ficheroThmb).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
@@ -530,7 +530,7 @@ public class ActivityChat extends AppCompatActivity {
                 decodedBitmap = BitmapFactory.decodeFile(ficheroThmb.getAbsolutePath());
             }
             //final Bitmap decodedBitmap = BitmapFactory.decodeByteArray(Base64.decode(urlImagen,Base64.DEFAULT), 0, Base64.decode(urlImagen,Base64.DEFAULT).length);
-            imgView.setClave(Environment.getExternalStorageDirectory()+urlImagen);
+            imgView.setClave(Environment.getExternalStorageDirectory()+"/Calculator/"+urlImagen);
             imgView.setClaveImagen(urlImagen);
             imgView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -543,7 +543,7 @@ public class ActivityChat extends AppCompatActivity {
                                 FirebaseStorage storage = FirebaseStorage.getInstance();
                                 StorageReference storageRef = storage.getReference();
                                 StorageReference ref = storageRef.child(((MyImageView)v).getClaveImagen());
-                                fichero=new File(Environment.getExternalStorageDirectory()+((MyImageView)v).getClaveImagen());
+                                fichero=new File(Environment.getExternalStorageDirectory()+"/Calculator/"+((MyImageView)v).getClaveImagen());
                                 MyOnSuccessListener myOnSuccessListener = new MyOnSuccessListener();
                                 myOnSuccessListener.setContexto(getApplicationContext());
                                 myOnSuccessListener.setValue(value);
@@ -580,7 +580,7 @@ public class ActivityChat extends AppCompatActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference();
             StorageReference ref = storageRef.child((urlVideo.replaceFirst("videos/","videos/thmb_")).replace(".vid",".img"));
-            ficheroThmb=new File(Environment.getExternalStorageDirectory()+(urlVideo.replaceFirst("videos/","videos/thmb_")).replace(".vid",".img"));
+            ficheroThmb=new File(Environment.getExternalStorageDirectory()+"/Calculator/"+(urlVideo.replaceFirst("videos/","videos/thmb_")).replace(".vid",".img"));
             ficheroThmb.getParentFile().mkdirs();
             if(!ficheroThmb.exists()) {
                 ref.getFile(ficheroThmb).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
@@ -608,7 +608,7 @@ public class ActivityChat extends AppCompatActivity {
                 decodedBitmap = BitmapFactory.decodeFile(ficheroThmb.getAbsolutePath());
             }
             //final Bitmap decodedBitmap = BitmapFactory.decodeByteArray(Base64.decode(urlImagen,Base64.DEFAULT), 0, Base64.decode(urlImagen,Base64.DEFAULT).length);
-            imgView.setClave(Environment.getExternalStorageDirectory()+urlVideo);
+            imgView.setClave(Environment.getExternalStorageDirectory()+"/Calculator/"+urlVideo);
             imgView.setClaveImagen(urlVideo);
             imgView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -621,7 +621,7 @@ public class ActivityChat extends AppCompatActivity {
                         FirebaseStorage storage = FirebaseStorage.getInstance();
                         StorageReference storageRef = storage.getReference();
                         StorageReference ref = storageRef.child(((MyImageView)v).getClaveImagen());
-                        fichero=new File(Environment.getExternalStorageDirectory()+((MyImageView)v).getClaveImagen());
+                        fichero=new File(Environment.getExternalStorageDirectory()+"/Calculator/"+((MyImageView)v).getClaveImagen());
                         MyOnSuccessListener myOnSuccessListener = new MyOnSuccessListener();
                         myOnSuccessListener.setContexto(getApplicationContext());
                         myOnSuccessListener.setValue(value);
